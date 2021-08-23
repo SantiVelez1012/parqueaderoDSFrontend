@@ -8,20 +8,20 @@ import { Vehiculo } from "../models/vehiculo";
 })
 
 export class VehiculoService{
-    private baseEndPoint = 'http://localhost:3000/api';
-    private cabeceras: HttpHeaders = new HttpHeaders({'Content-Tpe': 'application/json'});
+    private baseEndPoint = 'http://localhost:3000/api/vehiculos';
+    private cabeceras: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
     constructor(private http:HttpClient) { }
 
     public getAll(): Observable<Vehiculo[]>{
-        return this.http.get<Vehiculo[]>(`${this.baseEndPoint}/vehiculos`);
+        return this.http.get<Vehiculo[]>(`${this.baseEndPoint}`);
     }
 
     public getByPlaca(placa:string): Observable<Vehiculo>{
-        return this.http.get<Vehiculo>(`${this.baseEndPoint}/vehiculos/${placa}`);
+        return this.http.get<Vehiculo>(`${this.baseEndPoint}/${placa}`);
     }
 
     public entryVehiculo(vehiculo:Vehiculo): Observable<Vehiculo>{
-        return this.http.post<Vehiculo>(`${this.baseEndPoint}`,vehiculo,{headers:this.cabeceras});
+        return this.http.post<Vehiculo>(`${this.baseEndPoint}/entry`,vehiculo,{headers:this.cabeceras});
     }
 
     public exitVehiculo(placa:string, fechaSalida:string): Observable<Vehiculo>{
@@ -34,6 +34,14 @@ export class VehiculoService{
 
     public getTime(placa:string):Observable<Vehiculo>{
         return this.http.get<Vehiculo>(`${this.baseEndPoint}/getTiempo/${placa}`);
+    }
+
+    public setCapacidad(capacidad:number):Observable<number>{
+        return this.http.post<number>(`${this.baseEndPoint}/cupos/set`, capacidad, {headers:this.cabeceras});
+    }
+
+    public getCapacidad():Observable<number>{
+        return this.http.get<number>(`${this.baseEndPoint}/cupos/get`);
     }
 
 }

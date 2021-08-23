@@ -1,0 +1,45 @@
+<div class="container">
+
+    <div class="row mt-5 mb-5 d-flex">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 col-12 justify-content-center">
+            <form [formGroup]="form" class="w-100" (ngSubmit)="search()">
+                <div class="mb-3">
+                    <label class="form-label text-center">Ingrese la placa a buscar</label>
+                    <input type="text" class="form-control" formControlName="placa">
+                  </div>
+                  <button type="submit" class="btn btn-success w-100">Buscar</button>
+            </form>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+
+    <div class="row mt-5" *ngIf="this.encontrado">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 col-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Placa</th>
+                        <th scope="col">Fecha y Hora de Ingreso</th>
+                        <th scope="col">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr >
+                        <td>{{this.vehiculo.placa}}</td>
+                        <td>{{servicioFecha.showDate(this.vehiculo.fechaIngreso)}}</td>
+                        <td>
+                            <button class="btn-danger" onclick="">Salir</button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+
+
+</div>
