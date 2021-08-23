@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row mt-5 mb-5">
+        <div class="col-md-3"></div>
+
+        <div class="col-12 col-md-6 justify-content-center">
+
+
+            <h5 class="mb-3">Informe de parqueo para el vehiculo con placa {{placa}}</h5>
+
+            <ul class="list-group bg-beige">
+                <li class="list-group-item">Placa del vehiculo: {{this.placa}}</li>
+                <li class="list-group-item">Fecha de entrada: {{servicioFecha.showDate(this.vehiculo.fechaIngreso)}}</li>
+                <li class="list-group-item">Fecha de salida: {{servicioFecha.showDate(this.vehiculo.fechaSalida)}}</li>
+                <li class="list-group-item">Minutos parqueado: {{this.vehiculo.minutosParqueado}}</li>
+                <li class="list-group-item">Precio final: {{(this.vehiculo.minutosParqueado * 100)}}</li>
+            </ul>
+
+        </div>
+
+        <div class="col-md-3"></div>
+    </div>
+</div>

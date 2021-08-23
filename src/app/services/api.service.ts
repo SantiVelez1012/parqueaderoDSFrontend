@@ -12,6 +12,7 @@ import { Vehiculo } from "src/app/models/vehiculo";
 
 export class ApiService {
     registros: Vehiculo[] = [];
+    cupo!:number;
 
     constructor(private router: Router, private fechaService: FechaService, private vehiculoService: VehiculoService) {
 
@@ -23,16 +24,18 @@ export class ApiService {
 
     salidaVehiculo(placa: string) {
         let fechaActual = this.fechaService.processDate();
-        this.vehiculoService.exitVehiculo(placa, fechaActual);
+        let valores = {
+            "fechaSalida":fechaActual
+        }
+        this.vehiculoService.exitVehiculo(placa, valores).subscribe(data =>{
+                console.log(data);
+            });
         this.generarInforme(placa);
     }
 
-    verificarCupo():boolean {
-        this.vehiculoService.getAll().subscribe(data => {
-            this.registros = data;
-        })
-        console.log();
-        if (this.registros.length > 2) {
+    verificarCupo(cantidad:number, cupos:number):boolean {
+
+        if (cantidad > cupos) {
             return false;
         } else {
             return true;

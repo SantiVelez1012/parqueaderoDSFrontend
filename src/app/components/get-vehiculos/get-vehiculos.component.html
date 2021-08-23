@@ -16,7 +16,7 @@
                     <td>{{vehiculo.placa}}</td>
                     <td>{{servicioFecha.showDate(vehiculo.fechaIngreso)}}</td>
                     <td>
-                        <button class="btn-danger">Salir</button>
+                        <button class="btn-danger" (click)="salir(vehiculo.placa)">Salir</button>
                     </td>
                   </tr>
                   

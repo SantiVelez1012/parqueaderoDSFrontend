@@ -28,8 +28,12 @@ export class HomeComponent implements OnInit {
 
     setCapacidad(){
         const value = this.form.value;
-        let capacidad = value.capacidad;
-        console.log(capacidad);
-        this.vehiculoService.setCapacidad(capacidad);
+        console.log(value.capacidad);
+        let valores = {
+            "capacidad":value.capacidad
+        }
+        this.vehiculoService.setCapacidad(valores).subscribe(data =>{
+            console.log(data);
+        });
     }
 }

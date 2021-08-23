@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { Vehiculo } from "src/app/models/vehiculo";
 import { VehiculoService } from "src/app/services/vehiculo.service";
 import { FechaService } from "src/app/services/fecha.service";
+import { ApiService } from "src/app/services/api.service";
 @Component({
     selector:'app-formGetAll',
     templateUrl:'./get-vehiculos.component.html',
@@ -13,7 +14,7 @@ export class GetVehiculosComponent implements OnInit {
 
     vehiculos!:Vehiculo[];
     servicioFecha = new FechaService();
-    constructor(private servicio:VehiculoService, router:Router){
+    constructor(private servicio:VehiculoService, private router:Router, private apiService:ApiService){
 
     }
     
@@ -22,4 +23,9 @@ export class GetVehiculosComponent implements OnInit {
             this.vehiculos = data;
         })
     }
+
+    salir(placa:string){
+        this.apiService.salidaVehiculo(placa);
+    }
+
 }

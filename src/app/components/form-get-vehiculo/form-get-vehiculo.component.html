@@ -30,7 +30,7 @@
                         <td>{{this.vehiculo.placa}}</td>
                         <td>{{servicioFecha.showDate(this.vehiculo.fechaIngreso)}}</td>
                         <td>
-                            <button class="btn-danger" onclick="">Salir</button>
+                            <button class="btn-danger" (click)="salir(this.vehiculo.placa)">Salir</button>
                         </td>
                     </tr>
 

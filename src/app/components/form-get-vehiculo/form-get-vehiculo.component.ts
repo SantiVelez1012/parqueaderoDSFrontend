@@ -41,5 +41,10 @@ export class GetVehiculoComponent implements OnInit {
 
       }
 
+
+      salir(placa:string){
+        this.apiService.salidaVehiculo(placa);
+    }
+
     
 }

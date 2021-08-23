@@ -20,24 +20,24 @@ export class VehiculoService{
         return this.http.get<Vehiculo>(`${this.baseEndPoint}/${placa}`);
     }
 
-    public entryVehiculo(vehiculo:Vehiculo): Observable<Vehiculo>{
-        return this.http.post<Vehiculo>(`${this.baseEndPoint}/entry`,vehiculo,{headers:this.cabeceras});
+    public entryVehiculo(vehiculo:Vehiculo): Observable<any>{
+        return this.http.post<any>(`${this.baseEndPoint}/entry`,vehiculo,{headers:this.cabeceras});
     }
 
-    public exitVehiculo(placa:string, fechaSalida:string): Observable<Vehiculo>{
+    public exitVehiculo(placa:string, fechaSalida:Object): Observable<Vehiculo>{
         return this.http.post<Vehiculo>(`${this.baseEndPoint}/${placa}`,fechaSalida, {headers:this.cabeceras});
     }
 
-    public updateTime(placa:string): Observable<Vehiculo>{
-        return this.http.post<Vehiculo>(`${this.baseEndPoint}/actualizarTime/${placa}`, null);
+    public updateTime(placa:string): Observable<any>{
+        return this.http.post<any>(`${this.baseEndPoint}/actualizarTime/${placa}`, null);
     }
 
-    public getTime(placa:string):Observable<Vehiculo>{
-        return this.http.get<Vehiculo>(`${this.baseEndPoint}/getTiempo/${placa}`);
+    public getTime(placa:string):Observable<any>{
+        return this.http.get<any>(`${this.baseEndPoint}/getTiempo/${placa}`);
     }
 
-    public setCapacidad(capacidad:number):Observable<number>{
-        return this.http.post<number>(`${this.baseEndPoint}/cupos/set`, capacidad, {headers:this.cabeceras});
+    public setCapacidad(capacidad:Object):Observable<any>{
+        return this.http.post<any>(`${this.baseEndPoint}/cupos/set`, capacidad, {headers:this.cabeceras});
     }
 
     public getCapacidad():Observable<number>{

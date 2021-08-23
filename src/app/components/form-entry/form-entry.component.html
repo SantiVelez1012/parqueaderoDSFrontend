@@ -2,12 +2,13 @@
     <div class="row mt-5 mb-5 d-flex">
         <div class="col-md-4"></div>
         <div class="col-md-4 col-12 justify-content-center">
-            <form [formGroup]="form" class="w-100">
+            <form [formGroup]="form" class="w-100" (ngSubmit)="ingresar($event)">
                 <div class="mb-3">
                     <label class="form-label text-center">Ingrese la placa del vehiculo a añadir</label>
                     <input type="text" class="form-control" formControlName="placa">
                 </div>
-                <button type="submit" class="btn btn-success w-100" click="ingresar()">Agregar</button>
+                <button type="submit" class="btn btn-success w-100" [disabled]="!this.posible" >Agregar</button>
+                <p *ngIf="!this.posible"> Los cupos están llenos, por favor espere a que se desocupe alguno </p>
             </form>
         </div>
         <div class="col-md-4"></div>

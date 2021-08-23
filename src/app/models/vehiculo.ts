@@ -5,4 +5,10 @@ export class Vehiculo{
     fechaSalida!:string;
     minutosParqueado!:number;
     estado!:boolean;
+
+    constructor(placa:string, fechaIngreso:string){
+        this.placa = placa;
+        this.fechaIngreso = fechaIngreso;
+    }
+
 }
